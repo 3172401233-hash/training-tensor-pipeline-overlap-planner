@@ -1,0 +1,16 @@
+{
+  "name": "training-tensor-pipeline-overlap-planner",
+  "version": "1.0.0",
+  "description": "Deterministic scheduler that overlaps tensor-parallel AllReduce with pipeline-parallel activation transfers and GPU compute",
+  "type": "module",
+  "engines": {
+    "node": ">=24.16.0"
+  },
+  "bin": {
+    "tp-pp-planner": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}

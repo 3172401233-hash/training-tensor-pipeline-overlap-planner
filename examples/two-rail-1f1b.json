@@ -1,0 +1,57 @@
+{
+  "tpSize": 4,
+  "ppSize": 4,
+  "numMicrobatches": 8,
+  "allreduceAlgorithm": "ring",
+  "schedule": "1f1b",
+  "stages": [
+    {
+      "id": "embed-stage",
+      "rail": 0,
+      "forwardMs": 12,
+      "backwardMs": 24,
+      "optimizerMs": 6,
+      "fwdActivationMb": 24,
+      "bwdActivationMb": 24,
+      "memory": { "capacityMb": 8192, "paramMb": 512, "gradMb": 512 }
+    },
+    {
+      "id": "transformer-a",
+      "rail": 0,
+      "forwardMs": 14,
+      "backwardMs": 28,
+      "optimizerMs": 6,
+      "fwdActivationMb": 32,
+      "bwdActivationMb": 32,
+      "memory": { "capacityMb": 8192, "paramMb": 768, "gradMb": 768 }
+    },
+    {
+      "id": "transformer-b",
+      "rail": 1,
+      "forwardMs": 14,
+      "backwardMs": 28,
+      "optimizerMs": 6,
+      "fwdActivationMb": 32,
+      "bwdActivationMb": 32,
+      "memory": { "capacityMb": 8192, "paramMb": 768, "gradMb": 768 }
+    },
+    {
+      "id": "loss-stage",
+      "rail": 1,
+      "forwardMs": 10,
+      "backwardMs": 20,
+      "optimizerMs": 6,
+      "fwdActivationMb": 16,
+      "bwdActivationMb": 16,
+      "memory": { "capacityMb": 8192, "paramMb": 256, "gradMb": 256 }
+    }
+  ],
+  "topology": {
+    "railBandwidthGbPerSec": 400,
+    "crossRailBandwidthGbPerSec": 50,
+    "crossRailHopMs": 0.5,
+    "links": [
+      { "from": 1, "to": 2, "type": "cross-rail", "bandwidthGbPerSec": 50, "hopMs": 0.5 }
+    ]
+  }
+}
